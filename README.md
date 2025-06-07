@@ -28,8 +28,8 @@ A modern, responsive React component for selecting skip sizes with pricing and f
 
 ```tsx
 src / components / SkipSelector.tsx; // Main component
-FeatureBadge.tsx; // Reusable feature indicator
-SkipCardSkeleton.tsx; // Skeleton loader for skip cards
+src / components / FeatureBadge.tsx; // Reusable feature indicator
+src / components / SkipCardSkeleton.tsx; // Skeleton loader for skip cards
 ```
 
 ### Key Components
