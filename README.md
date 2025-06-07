@@ -1,54 +1,211 @@
-# React + TypeScript + Vite
+# Skip Selection Component
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive React component for selecting skip sizes with pricing and features.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### User Interface
 
-## Expanding the ESLint configuration
+- 🎨 Modern, clean design with smooth animations
+- 📱 Fully responsive layout (mobile, tablet, desktop)
+- ⚡ Interactive card-based interface
+- 🔄 Smooth transitions and hover effects
+- 💫 Loading skeletons for better UX
+- 🎯 Clear visual feedback for selections
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Technical Features
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+- 🛠 Built with React + TypeScript
+- 🎨 Styled with Tailwind CSS
+- 🔄 Data fetching with React Query
+- 📱 Mobile-first responsive design
+- 🎭 Framer Motion for animations
+- 🏗 Component-based architecture
+
+## Implementation Details
+
+### Component Structure
+
+```tsx
+src / components / SkipSelector.tsx; // Main component
+FeatureBadge.tsx; // Reusable feature indicator
+SkipCardSkeleton.tsx; // Skeleton loader for skip cards
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Key Components
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+#### SkipSelector
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+The main component that handles:
+
+- Data fetching and state management
+- Skip card rendering
+- Selection logic
+- Responsive layout
+- Loading and error states
+
+#### FeatureBadge
+
+A reusable component for displaying feature states:
+
+- Handles both active and inactive states
+- Dynamic icons and colors
+- Consistent styling across features
+
+#### SkipCardSkeleton
+
+A skeleton loader for skip cards.
+
+### State Management
+
+```typescript
+interface Skip {
+  id: number;
+  size: number;
+  hire_period_days: number;
+  transport_cost: number | null;
+  per_tonne_cost: number | null;
+  price_before_vat: number;
+  vat: number;
+  postcode: string;
+  area: string;
+  forbidden: boolean;
+  created_at: string;
+  updated_at: string;
+  allowed_on_road: boolean;
+  allows_heavy_waste: boolean;
+}
 ```
+
+### UI/UX Features
+
+1. **Skip Cards**
+
+   - Clear visual hierarchy
+   - Feature indicators
+   - Price breakdown
+   - Selection state
+   - Hover and tap animations
+
+2. **Feature Indicators**
+
+   - Road Legal Status
+     - Green for allowed
+     - Red for not allowed
+   - Heavy Waste Status
+     - Blue for allowed
+     - Yellow for restricted
+
+3. **Price Display**
+
+   - Base price
+   - VAT calculation
+   - Total price
+   - Currency formatting
+
+4. **Mobile Optimization**
+
+   - Compact bottom bar
+   - Touch-friendly buttons
+   - Responsive grid layout
+   - Optimized spacing
+
+5. **Loading States**
+   - Skeleton loaders
+   - Smooth transitions
+   - Maintains layout structure
+   - Reduces content shift
+
+### Responsive Design
+
+The component uses a mobile-first approach with three main breakpoints:
+
+- Mobile: < 768px (single column)
+- Tablet: 768px - 1024px (two columns)
+- Desktop: > 1024px (three columns)
+
+### Performance Considerations
+
+1. **Data Fetching**
+
+   - React Query for caching
+   - Loading states
+   - Error handling
+   - Optimistic updates
+
+2. **Animations**
+
+   - Hardware-accelerated transforms
+   - Efficient re-renders
+   - Smooth transitions
+
+3. **Asset Loading**
+   - Optimized images
+   - Lazy loading
+   - Proper sizing
+
+### Accessibility
+
+- Clear focus states
+- Semantic HTML
+- ARIA labels
+- Keyboard navigation
+- Color contrast compliance
+
+## Getting Started
+
+1. Install dependencies:
+
+```bash
+pnpm install
+```
+
+2. Start the development server:
+
+```bash
+pnpm dev
+```
+
+3. Build for production:
+
+```bash
+pnpm build
+```
+
+## Dependencies
+
+- React
+- TypeScript
+- Tailwind CSS
+- React Query
+- Framer Motion
+- Heroicons
+
+## Best Practices
+
+1. **Code Organization**
+
+   - Component-based architecture
+   - TypeScript for type safety
+   - Reusable components
+   - Clear naming conventions
+
+2. **Styling**
+
+   - Tailwind utility classes
+   - Consistent spacing
+   - Responsive design
+   - Theme variables
+
+3. **State Management**
+
+   - React Query for server state
+   - Local state for UI
+   - TypeScript interfaces
+   - Proper error handling
+
+4. **Performance**
+   - Optimized renders
+   - Proper caching
+   - Efficient animations
+   - Code splitting
